@@ -12,5 +12,5 @@ I wanted to expand my knowledge of web development past what I knew from school.
 
 
 ## Credits
-tutorial.djangogirls.org
-djangoproject.com
+* tutorial.djangogirls.org
+* djangoproject.com
