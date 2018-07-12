@@ -12,8 +12,8 @@ class Post(models.Model):
         author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
         title = models.CharField(max_length=200)
         text = models.TextField()
-        create_date = models.DateTimeField(default=timezone.now)
-        publish_date = models.DateTimeField(blank=True, null=True)
+        created_date = models.DateTimeField(default=timezone.now)
+        published_date = models.DateTimeField(blank=True, null=True)
 
 
 	#publish sets the publish date to the time now 

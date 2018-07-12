@@ -4,6 +4,8 @@
 
 <!--  we can connect data from our database to html using Django ORM and QuerySets -->
 
+<!-- Django works by using template tags to connect dynamic python objects to hmtl-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,32 @@
 	<h1>Welcome to Blog tutorial!</h1>
 
 	<p>this is a test yeah!</p>
+	<div>
+<!-- 		this posts object is the same post object that we added in in the views.py 
+		its very similar to how jsp work, but instead of java and html, it is python and html -->
+		
+<!-- 		this will display all the post as a list
+		{{posts}} -->
+
+<!-- 		forlooping through the posts, its pretty much the same idea as jsp  -->
+<!-- 		{% for post in posts %}
+    		<p> my post:  {{ post }} </br></p>
+    		
+		{% endfor %} -->
+
+<!-- it seems like django is pretty smart, we can just do object.key (or db column) and it will know which one to pick ex: post.text-->
+
+<!-- code |linebreaksbr is piping the posts' text through a filter to convert line-breaks into paragraphs. -->
+		{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+		{% endfor %}
+
+
+	</div>
 
 
 </body>
