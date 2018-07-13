@@ -9,7 +9,7 @@ I wanted to expand my knowledge of web development past what I knew from school.
 • Completed <br />
 • All edited .py, .css and .html files have my notes on there about Django 
 
-##Installing
+## Installing
 
 ### Prerequisite
 In order to run the project locally on your own machine, you first need to have python3.6+ installed. <br />
