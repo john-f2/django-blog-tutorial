@@ -6,8 +6,8 @@
 I wanted to expand my knowledge of web development past what I knew from school. I wanted to experiment with web development outside of using Tomcat and Java. This tutorial was very helpful to get started with Django. 
 
 ## Status
-Completed
-All edited .py, .css and .html files have my notes on there about Django 
+• Completed
+• All edited .py, .css and .html files have my notes on there about Django 
 
 
 ## Built with
