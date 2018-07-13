@@ -1,3 +1,7 @@
+{% extends 'blog/base.html' %} 
+
+<!--when you use blocks in django, this block extends tag must be the first item in the html file  -->
+
 <!-- head is an element that contains information about the document that is not displayed on the screen. -->
 <!-- body is an element that contains everything else that is displayed as part of the web page.
  -->
@@ -6,16 +10,30 @@
 
 <!-- Django works by using template tags to connect dynamic python objects to hmtl-->
 
-<!DOCTYPE html>
+<!-- this is how django will loading in static files (like css and images)-->
+<!-- {% load staticfiles %} -->
+
+<!-- <!DOCTYPE html>
 <html>
-<head>
+<head> -->
+	<!-- we are going to use bootstrap as our html and css framework these links just point to existing css files on the internet -->
+	<!-- essentially we can find style sheets online and then include them into our html-->
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+
+	<!-- this link essentially lets us use a specific type of font for our text -->
+	<!-- <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+ -->
+<!-- 	this is where we link up to our blog.css file (using bootstrap) -->
+	<!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
 	<title>Django Blog Tutorial</title>
 </head>
 <body>
-	<h1>Welcome to Blog tutorial!</h1>
+	<div class="page-header">
+		
+		<h1><a href="/">Django Girls Blog</a></h1> -->
 
-	<p>this is a test yeah!</p>
-	<div>
 <!-- 		this posts object is the same post object that we added in in the views.py 
 		its very similar to how jsp work, but instead of java and html, it is python and html -->
 		
@@ -31,19 +49,58 @@
 <!-- it seems like django is pretty smart, we can just do object.key (or db column) and it will know which one to pick ex: post.text-->
 
 <!-- code |linebreaksbr is piping the posts' text through a filter to convert line-breaks into paragraphs. -->
-		{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+
+
+<!-- 	</div> -->
+
+<!-- remeber in the css, selectors with . in front means it is associated with a class
+used in the html-->
+	<!-- <div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-		{% endfor %}
-
-
-	</div>
+</div>
 
 
 </body>
 </html>
+ -->
+
+ <!-- the code above is commented out becasue we are now using a base.html file to populate -->
+
+<!-- this is how we use blocks in django, in the base template we specify a block area
+and in an html that wants to use the base template, we just need to specify the block content to fill it in with -->
+
+<!-- "{% url 'post_detail' pk=post.pk %}" is how we can create links to other htmls on django
+
+	The post_detail part means that Django will be expecting a URL in blog/urls.py with name=post_detail
+
+	pk is short for primary key from the database
+
+	with this reference, we need to create a post_detail view to establish this link
+	
+ -->
+{% block content %}
+ {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            {{ post.published_date }}
+        </div>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+
+{%endblock%}
 
 
